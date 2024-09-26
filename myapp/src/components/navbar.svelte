@@ -4,7 +4,7 @@
 
 <div class="w-full h-full bg-[#0d1b2a] shadow-xl">
   <ul class="navbar w-full h-full p-4 roboto-bold text-white flex">
-    <li class="w-fit text-[1.5vw] text-nowrap mr-auto my-auto">Jason Chau</li>
+    <li class="w-fit text-[1.5rem] text-nowrap mr-auto my-auto">Jason Chau</li>
     <li class="nav-item"><a href="/"> HOME </a></li>
     <li class="nav-item"><a href="/tools"> TOOLS </a></li>
     <li class="nav-item">PORTFOLIO</li>
@@ -20,7 +20,7 @@
   .nav-item {
     margin-top: auto;
     margin-bottom: auto;
-    font-size: 1.5vw;
+    font-size: 1.5rem;
   }
   .roboto-bold {
     font-family: "Roboto", system-ui;
