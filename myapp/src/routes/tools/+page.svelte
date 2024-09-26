@@ -1,6 +1,4 @@
 <script lang='ts'>
-    import Page from "../+page.svelte";
-
     let weeklyTotal: (number | '')[] = Array(7).fill('');
     let days_of_week: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     let sum: number = 0;
