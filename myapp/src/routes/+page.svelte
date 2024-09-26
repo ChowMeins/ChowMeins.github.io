@@ -1,1 +1,3 @@
-<h1> Welcome to Jason's Website! </h1>
+<div class='bg-[#0d1b2a]'>
+    <p> Hello everyone! </p>
+</div>
