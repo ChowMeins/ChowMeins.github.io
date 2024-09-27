@@ -1,7 +1,7 @@
 <script lang='ts'>
     import {onMount} from 'svelte';
     onMount(() => {
-        let pikachu: HTMLElement = document.getElementById('pikachu');
+        let pikachu: (HTMLElement | null) = document.getElementById('pikachu');
         if (pikachu) {
             pikachu.style.transform = "translate(1000px, 1000px)";
         }
