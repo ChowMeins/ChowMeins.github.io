@@ -2,15 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+html {
     background-color: #9DC7E8;
-    overflow-x: hidden;
 }
 ::-webkit-scrollbar{
     background-color: rgb(151, 191, 231);
     width: 10px;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #2569e8;
+    background-color: #95b1e4;
     border-radius: 5px;
+}
+.roboto-bold {
+    font-family: "Roboto", system-ui;
+    font-weight: 700;
+    font-style: normal;
+}
+.oswald {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }

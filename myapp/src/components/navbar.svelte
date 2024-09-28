@@ -4,44 +4,56 @@
   import { open } from "./store";
   import { fly } from "svelte/transition";
 
-  let sidebar : (HTMLElement | null) = null;;
+  let sidebar : (HTMLElement | null) = null;
+  let hamburgerIcon : (HTMLElement | null) = null;
   let menuOpen: boolean = false;
 
   onMount(() => {
-    sidebar = document.getElementById('sidebar');
+
     open.subscribe((val: boolean) => {
       menuOpen = val;
     });
     window.addEventListener("resize", () => {
       if(window.innerWidth > 900) {
         open.set(false);
-      };
+      }
+    });
+    window.addEventListener("click", (event: MouseEvent) => {
+        if(hamburgerIcon && !hamburgerIcon.contains(event.target as Node) && menuOpen == true) {
+          open.set(false);
+        }
+    });
   });
-  });
+
+  function closeSideBar() {
+    open.set(false);
+  }
+
+
 
 
 </script>
 
 <!--  Navbar -->
-<div class="w-full h-full bg-[#9DC7E8] shadow-md p-4 z-[1]">
-  <ul class="navbar w-full h-full roboto-bold text-white flex  drop-shadow-md">
-    <li class="w-fit text-[1.5rem] text-nowrap mr-auto my-auto">JC</li>
+<div class="w-full h-full bg-[#9DC7E8] p-8 z-[1]">
+  <ul class="navbar w-full h-full oswald text-white flex">
+    <li class="w-fit text-[1.5rem] text-nowrap mr-auto my-auto">JASON CHAU</li>
     <li class="nav-item"><a href="/"> HOME </a></li>
     <li class="nav-item"><a href="/tools"> TOOLS </a></li>
     <li class="nav-item">PORTFOLIO</li>
     <li class="nav-item">PROJECTS</li>
-    <li class='hamburger-icon'><HamburgerIcon /></li>
+    <li id='hamburger-icon' bind:this={hamburgerIcon}><HamburgerIcon /></li>
   </ul>
 </div>
 
 <!-- Side Menu -->
 {#if menuOpen}
-  <div id='sidebar' in:fly={{duration: 500, x: 300}} out:fly={{duration: 500, x: 300}}>
-    <ul class='w-full text-center'> 
-      <li class="menu-bar"><a href="/"> HOME </a></li>
-      <li class="menu-bar"><a href="/tools"> TOOLS </a></li>
-      <li class="menu-bar">PORTFOLIO</li>
-      <li class="menu-bar">PROJECTS</li>
+  <div id='sidebar' bind:this={sidebar} class='oswald' in:fly={{duration: 500, y: 0}} out:fly={{duration: 500, y: 0}}>
+    <ul class='w-full block'> 
+      <li class="menu-bar"><a href="/" on:click={closeSideBar}> HOME </a> </li>
+      <li class="menu-bar"><a href="/tools" on:click={closeSideBar}> TOOLS </a> </li>
+      <li class="menu-bar"><a href="/" on:click={closeSideBar}> PORTFOLIO </a> </li>
+      <li class="menu-bar"><a href="/" on:click={closeSideBar}> PROJECTS </a> </li>
     </ul>
   </div>
 {/if}
@@ -57,23 +69,31 @@
   }
   #sidebar {
     width: 100%;
-    background-color: #344d7b;
+    background-color: #9DC7E8;
     position: absolute;
     right: 0;
     z-index: 1;
+    border-width: 5px 5px 5px 5px;
+    border-style: solid;
+    border-color: white;
   }
   .menu-bar {
+    width: 100%;
     color: white;
     font-size: 2rem;
     padding: 0.5rem 0 0.5rem 0;
   }
-  .roboto-bold {
-    font-family: "Roboto", system-ui;
-    font-weight: 700;
-    font-style: normal;
+  .menu-bar:nth-child(odd) {
+    background-color: #85b1d3;
   }
-  .hamburger-icon {
+  .menu-bar a {
+    display: block;
     width: 100%;
+    margin: 0 auto 0 auto;
+    text-align: center;
+  }
+  #hamburger-icon {
+    width: fit-content;
     height: fit-content;
     margin: auto 0 auto 0;
     display: none;
@@ -85,18 +105,11 @@
     .nav-item {
       display: none;
     }
-    .roboto-bold {
-      font-weight: 500;
-    }
-    .hamburger-icon {
+    #hamburger-icon {
       display: flex;
     }
   }
   @media (max-width: 630px) {
-    .roboto-bold {
-      font-size: 1rem;
-      font-weight: 500;
-    }
   }
   @media (max-width: 160px) {
   }

@@ -3,7 +3,6 @@
     onMount(() => {
         let pikachu: (HTMLElement | null) = document.getElementById('pikachu');
         if (pikachu) {
-            pikachu.style.transform = "translate(1000px, 1000px)";
         }
     });
 </script>
@@ -15,20 +14,22 @@
 <style>
     .wave {
         width: 100%;
-        margin-top: 10%;
+        position: relative;
         aspect-ratio: 960/300;
         background-repeat: no-repeat;
         background-position: bottom;
         background-size: cover;
         background-image: url("./wave.svg");
+
     }
     #pikachu {
-        width: fit-content;
-        height: fit-content;
+        width: auto;
+        height: 100%;
+        position: absolute;
+        left: 35%;
         margin: 0 auto 0 auto;
         animation-name: surfing;
         animation-duration: 2s;
-        left: 45%;
         animation-iteration-count: infinite;
         z-index: 1;
     }
