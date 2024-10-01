@@ -16,8 +16,8 @@
     });
 
     function validateAmount(amount: string, index: number, type: string): boolean {
+        if(amount == null) amount = "0";
         let amountParts: string[] = amount.toString().split(".");
-
         if (amountParts.length === 1 || (amountParts.length === 2 && amountParts[1].length <= 2)) {
             if(type === "cash") {
                 cashInput[index][1] = true;
@@ -34,7 +34,6 @@
             else if (type === "credit") { 
                 creditInput[index][1] = false;
             }
-            console.log("Exited");
             return false;
         }
         return true;
@@ -44,8 +43,9 @@
         let temp: number = 0;
         sum = "";
         for(let i = 0; i < weeklyCash.length; ++i) {
-            temp += (weeklyCash[i] == '' ? 0 : Number(weeklyCash[i])) + (weeklyCredit[i] == '' ? 0 : Number(weeklyCredit[i]));
+            temp += (weeklyCash[i] === "" ? 0 : parseFloat(weeklyCash[i])) + (weeklyCredit[i] === "" ? 0 : parseFloat(weeklyCredit[i]));
         }
+        console.log(temp);
         temp = Math.trunc(temp * 100) / 100
         let tempToString: string[] = temp.toString().split(".");
         if (tempToString.length === 2 && tempToString[1].length === 1) {
