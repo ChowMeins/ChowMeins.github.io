@@ -1,26 +1,22 @@
 <script lang='ts'>
-  import { onMount } from "svelte";
-  import Footer from "../components/footer.svelte";
+    import { onMount } from "svelte";
+    import { storageRef } from "../firebaseConfig";
+    import { getDownloadURL } from "firebase/storage";
+    import { ref } from "firebase/storage";
 
-  let pikachuX: number, pikachuY: number = 0;
-  let pikachu: (HTMLElement | null) = null;
+    onMount(() => { 
+        let techIcons = [...document.getElementsByClassName('tech-icon')];
 
-  onMount(() => {
-    pikachu = document.getElementById('pikachu');
-    if (pikachu) {
-        pikachuX = pikachu.offsetWidth;
-        pikachuY = pikachu.offsetHeight;
-        pikachu.style.left = `calc(50% - ${pikachuX / 2}px)`;
-
-    }
-    window.addEventListener('resize', () => {
-    if (pikachu) {
-        pikachuX = pikachu.offsetWidth;
-        pikachuY = pikachu.offsetHeight;
-        pikachu.style.left = `calc(50% - ${pikachuX / 2}px)`;
-    }
-  })
-  });
+        techIcons.forEach((icon) => {
+            const iconRef = ref(storageRef, `tech-icons/${icon.id}.svg`);
+            const currIcon: HTMLImageElement | null = document.getElementById(icon.id) as HTMLImageElement | null;
+            getDownloadURL(iconRef).then((url) => {
+                if (currIcon) {
+                    currIcon.src = url;
+                }
+            });
+        });
+    });
 
 </script>
 
@@ -30,8 +26,6 @@
         <!-- Left side of home page -->
         <div class='profile'>
             <div class='w-full h-full flex row flex-wrap'>
-                <h1 class='w-full text-white font-semibold text-5xl text-center drop-shadow-md'> Welcome! </h1>
-                <hr class='w-[90%] mt-4 mx-auto border-2 border-white'/>
                 <p class='w-full h-fit py-4 text-white font-semibold text-5xl text-center  drop-shadow-md'> Hello, I'm Jason. </p>
                 <img src='/hamster-camera.gif' class='profile-pic border-4 border-white rounded-full drop-shadow-xl' alt='My IRL Pic'/>
             </div>
@@ -41,15 +35,17 @@
             <div class='w-full rounded-xl p-8 mx-auto'>
                 <p class='w-full h-fit text-white text-[3rem] text-wrap font-semibold text-center drop-shadow-md'> An aspiring Software Engineer who loves to code.</p>
                 <ul class='tech-stack'>
-                    <li> <img src='java-icon.svg' alt='Java' /> </li>
-                    <li> <img src='python-icon.svg' alt='Python' /> </li>
-                    <li> <img src='react-icon.svg' alt='React'/> </li>
-                    <li> <img src='svelte-icon.svg' alt='Svelte'/> </li>
-                    <li> <img src='html-icon.svg' alt='HTML'/> </li>
-                    <li> <img src='css-icon.svg' alt='CSS'/> </li> 
-                    <li> <img src='js-icon.svg' alt='JavaScript' /> </li>
-                    <li> <img src='ts-icon.svg' alt='TypeScript' /> </li>
-                    <li> <img src='sql-icon.svg' alt='SQL' /> </li>
+                    <li> <img id='java-icon' class='tech-icon' alt='Java' /> </li>
+                    <li> <img id='python-icon' class='tech-icon' alt='Python' /> </li>
+                    <li> <img id='react-icon' class='tech-icon' alt='React'/> </li>
+                    <li> <img id='svelte-icon' class='tech-icon' alt='Svelte'/> </li>
+                    <li> <img id='html-icon' class='tech-icon' alt='HTML'/> </li>
+                    <li> <img id='css-icon' class='tech-icon' alt='CSS'/> </li> 
+                    <li> <img id='js-icon' class='tech-icon' alt='JavaScript' /> </li>
+                    <li> <img id='ts-icon' class='tech-icon' alt='TypeScript' /> </li>
+                    <li> <img id='sql-icon' class='tech-icon' alt='SQL' /> </li>
+                    <li> <img id='firebase-icon' class='tech-icon' alt='SQL' /> </li>
+
                 </ul>
             </div>
         </div>

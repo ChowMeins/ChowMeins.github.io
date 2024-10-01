@@ -37,7 +37,7 @@
 <!--  Navbar -->
 <div class="w-full h-full bg-[#9DC7E8] p-8 z-[1]">
   <ul class="navbar w-full h-full oswald text-white flex">
-    <li class="w-fit text-[1.5rem] text-nowrap mr-auto my-auto">JASON CHAU</li>
+    <li class="w-fit text-[1.5rem] text-nowrap mr-auto my-auto"> <a href="/"> JASON CHAU </a> </li>
     <li class="nav-item"><a href="/"> HOME </a></li>
     <li class="nav-item"><a href="/tools"> TOOLS </a></li>
     <li class="nav-item">PORTFOLIO</li>
