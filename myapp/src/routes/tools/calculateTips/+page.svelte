@@ -6,7 +6,7 @@
     let cashInput: Array<[(HTMLElement | null), boolean]> = Array(7).fill([null, true]);
     let creditInput: Array<[(HTMLElement | null), boolean]> = Array(7).fill([null, true]);
     let days_of_week: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    let sum: string = "";
+    let sum: string = "$0";
 
     onMount(() => {
         for(let i = 0; i < cashInput.length; ++i) {
@@ -43,9 +43,8 @@
         let temp: number = 0;
         sum = "";
         for(let i = 0; i < weeklyCash.length; ++i) {
-            temp += (weeklyCash[i] === "" ? 0 : parseFloat(weeklyCash[i])) + (weeklyCredit[i] === "" ? 0 : parseFloat(weeklyCredit[i]));
+            temp += (weeklyCash[i] === null || weeklyCash[i] === '' ? 0 : parseFloat(weeklyCash[i])) + (weeklyCredit[i] === null || weeklyCredit[i] === '' ? 0 : parseFloat(weeklyCredit[i]));
         }
-        console.log(temp);
         temp = Math.trunc(temp * 100) / 100
         let tempToString: string[] = temp.toString().split(".");
         if (tempToString.length === 2 && tempToString[1].length === 1) {
