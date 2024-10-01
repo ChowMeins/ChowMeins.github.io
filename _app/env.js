@@ -1,1 +1,1 @@
-export const env={}
+export const env={"PUBLIC_FIREBASE_API_KEY":"AIzaSyBhgiEvBBm_Gl5RMdkxAiCufH89RJ-fLIc","PUBLIC_FIREBASE_AUTH_DOMAIN":"jason-s-personal-website.firebaseapp.com","PUBLIC_FIREBASE_DATABASE_URL":"https://jason-s-personal-website-default-rtdb.firebaseio.com","PUBLIC_FIREBASE_PROJECT_ID":"jason-s-personal-website","PUBLIC_FIREBASE_STORAGE_BUCKET":"jason-s-personal-website.appspot.com","PUBLIC_FIREBASE_MESSAGING_SENDER_ID":"56309379579","PUBLIC_FIREBASE_APP_ID":"1:56309379579:web:acbb87ee4c8f9aaccf9b5e","PUBLIC_FIREBASE_MEASUREMENT_ID":"G-2CBD7KEEVQ"}
