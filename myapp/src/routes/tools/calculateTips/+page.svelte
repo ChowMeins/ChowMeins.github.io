@@ -57,12 +57,12 @@
 </script>
 
 <div class='w-full h-[100%] bg-[#1b263b]'>
-    <ul class='w-full bg-[#1b263b] text-white flex flex-wrap'>
+    <ul class='w-full bg-[#1a4769] text-white flex flex-wrap'>
         {#each days_of_week as day, i}
-            <h1 class='w-full pl-4 py-1 bg-[#415a77]'> {day} </h1>
+            <h1 class='day'> {day} </h1>
             <div class='w-[90%] pt-1 pb-4 flex'>
                 <div class='w-[45%] mr-auto'>
-                    <p class='ml-3'> Cash </p>  
+                    <p class='ml-3 font-semibold'> Cash </p>  
                     <input id="cash-{i}" type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here" bind:value={weeklyCash[i]} 
                         on:input={() => {
                         validateAmount(weeklyCash[i], i, "cash")
@@ -72,7 +72,7 @@
                     {/if}
                 </div>
                 <div class='w-[45%] ml-auto '>
-                    <p class='ml-3'> Credit </p>
+                    <p class='ml-3 font-semibold'> Credit </p>
                     <input id="credit-{i}" type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here"  bind:value={weeklyCredit[i]} 
                     on:input={() => {
                         validateAmount(weeklyCredit[i], i, "credit")
@@ -84,7 +84,7 @@
             </div>
         {/each}
     </ul>
-    <p class='bg-[#0d1b2a] text-white pl-4'> Total: {sum} </p>
+    <p class='day'> Total: {sum} </p>
 </div>
 
 <style>
@@ -98,6 +98,15 @@
     }
     input:focus-visible {
         outline: 3.5px solid #1296ee;
+    }
+    .day {
+        width: 100%;
+        padding-left: 0.75rem;
+        font-weight: 600;
+        color: white;
+        border-width: 2px 0 2px 0;
+        border-color: #13324a;
+        background-color: #256594;
     }
     .warning {
         width: 100%;
