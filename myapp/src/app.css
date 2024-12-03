@@ -3,15 +3,7 @@
 @tailwind utilities;
 
 html {
-    background-color: #9DC7E8;
-}
-::-webkit-scrollbar{
-    background-color: rgb(151, 191, 231);
-    width: 10px;
-}
-::-webkit-scrollbar-thumb {
-    background-color: #95b1e4;
-    border-radius: 5px;
+    background-color: #0d0d0d;
 }
 .roboto-bold {
     font-family: "Roboto", system-ui;

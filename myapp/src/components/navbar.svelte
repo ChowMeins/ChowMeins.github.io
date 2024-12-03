@@ -3,6 +3,8 @@
   import HamburgerIcon from "./hamburgerIcon.svelte";
   import { open } from "./store";
   import { fly } from "svelte/transition";
+  import Github from "./svg/github.svelte";
+  import LinkedIn from "./svg/linkedIn.svelte";
 
   let sidebar : (HTMLElement | null) = null;
   let hamburgerIcon : (HTMLElement | null) = null;
@@ -35,7 +37,7 @@
 </script>
 
 <!--  Navbar -->
-<div class="w-full h-full bg-[#9DC7E8] p-8 z-[1]">
+<div class="w-full h-full flex gap-8 bg-[#151515] p-8 z-[1]">
   <ul class="navbar w-full h-full oswald text-white flex">
     <li class="w-fit text-[1.5rem] text-nowrap mr-auto my-auto"> <a href="/"> JASON CHAU </a> </li>
     <li class="nav-item"><a href="/"> HOME </a></li>
@@ -44,9 +46,13 @@
     <li class="nav-item">PROJECTS</li>
     <li id='hamburger-icon' bind:this={hamburgerIcon}><HamburgerIcon /></li>
   </ul>
+  <ul class='w-fit h-full gap-2 flex my-auto'>
+    <Github className="w-[24px] h-[24px]"/> 
+    <LinkedIn className="w-[24px] h-[24px]"/> 
+  </ul>
 </div>
 
-<!-- Side Menu -->
+<!-- Side Menu for smaller devices -->
 {#if menuOpen}
   <div id='sidebar' bind:this={sidebar} class='oswald' in:fly={{duration: 500, y: 0}} out:fly={{duration: 500, y: 0}}>
     <ul class='w-full block'> 
@@ -69,13 +75,13 @@
   }
   #sidebar {
     width: 100%;
-    background-color: #9DC7E8;
+    background-color: #0d0d0d;
     position: absolute;
     right: 0;
     z-index: 1;
     border-width: 5px 5px 5px 5px;
     border-style: solid;
-    border-color: white;
+    border-color: #303030;
   }
   .menu-bar {
     width: 100%;
@@ -84,7 +90,7 @@
     padding: 0.5rem 0 0.5rem 0;
   }
   .menu-bar:nth-child(odd) {
-    background-color: #85b1d3;
+    background-color: #1d1d1d;
   }
   .menu-bar a {
     display: block;

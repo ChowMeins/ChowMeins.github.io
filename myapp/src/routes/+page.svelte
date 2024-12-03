@@ -1,53 +1,45 @@
 <script lang='ts'>
     import { onMount } from "svelte";
-    import { storageRef } from "../firebaseConfig";
-    import { getDownloadURL } from "firebase/storage";
-    import { ref } from "firebase/storage";
+    import Java from "../components/svg/techIcons/java.svelte";
 
-    onMount(() => { 
-        let techIcons = [...document.getElementsByClassName('tech-icon')];
-
-        techIcons.forEach((icon) => {
-            const iconRef = ref(storageRef, `tech-icons/${icon.id}.svg`);
-            const currIcon: HTMLImageElement | null = document.getElementById(icon.id) as HTMLImageElement | null;
-            getDownloadURL(iconRef).then((url) => {
-                if (currIcon) {
-                    currIcon.src = url;
-                }
-            });
-        });
+    export let data: any;
+    const techStack = data.publicUrls;
+    onMount(() => {
+        console.log(techStack);
     });
 
 </script>
 
 <!-- https://coolors.co/palette/0d1b2a-1b263b-415a77-778da9-e0e1dd -->
  <div class='full-page'>
-    <div class='home-page flex'>
+    <div class='home-page'>
         <!-- Left side of home page -->
         <div class='profile'>
             <div class='w-full h-full flex row flex-wrap'>
-                <p class='w-full h-fit py-4 text-white font-semibold text-5xl text-center  drop-shadow-md'> Hello, I'm Jason. </p>
-                <img src='/hamster-camera.gif' class='profile-pic border-4 border-white rounded-full drop-shadow-xl' alt='My IRL Pic'/>
+                <p class='w-full h-fit py-4 text-white font-semibold text-5xl text-center drop-shadow-md'> Hello, I'm Jason. 👋</p>
+                <img src='/hamster-camera.gif' class='profile-pic border-1 border-[#FFFFFF] rounded-full drop-shadow-xl' alt='My IRL Pic'/>
             </div>
         </div>
         <!-- Right side of home page -->
         <div class='intro'>
             <div class='w-full rounded-xl p-8 mx-auto'>
-                <p class='w-full h-fit text-white text-[3rem] text-wrap font-semibold text-center drop-shadow-md'> An aspiring Software Engineer who loves to code.</p>
-                <ul class='tech-stack'>
-                    <li> <img id='java-icon' class='tech-icon' alt='Java' /> </li>
-                    <li> <img id='python-icon' class='tech-icon' alt='Python' /> </li>
-                    <li> <img id='react-icon' class='tech-icon' alt='React'/> </li>
-                    <li> <img id='svelte-icon' class='tech-icon' alt='Svelte'/> </li>
-                    <li> <img id='html-icon' class='tech-icon' alt='HTML'/> </li>
-                    <li> <img id='css-icon' class='tech-icon' alt='CSS'/> </li> 
-                    <li> <img id='js-icon' class='tech-icon' alt='JavaScript' /> </li>
-                    <li> <img id='ts-icon' class='tech-icon' alt='TypeScript' /> </li>
-                    <li> <img id='sql-icon' class='tech-icon' alt='SQL' /> </li>
-                    <li> <img id='firebase-icon' class='tech-icon' alt='SQL' /> </li>
-
+                <p class='w-full h-fit mb-12 py-4 text-white text-[2rem] max-md:text-[1.5rem] max-sm:text-[1rem] text-wrap font-semibold text-center drop-shadow-md'> 
+                    I am an aspiring Software Engineer with a passion for creating innovative and efficient software solutions. 
+                    With a strong foundation in programming and a keen interest in tackling complex challenges, I strive to develop applications that are both functional and user-friendly.
+                    My dedication to continuous learning and adaptability allows me to stay at the forefront of emerging technologies and contribute meaningfully to impactful projects. 
+                </p>
+                <ul class='tech-stack gap-4'>
+                    {#each techStack as tech}
+                        <li class='w-fit h-full flex flex-col bg-white rounded-xl p-2'> <img class='w-[64px] h-[64px] mx-auto' src={tech.publicUrl} alt={tech.name}/> </li>
+                    {/each}
                 </ul>
             </div>
+        </div>
+    </div>
+    <div class='projects'>
+        <div class='flex flex-col'>
+            <h1 class='text-3xl'> Here's What I've Worked On! </h1>
+            <h1 class='py-4 text-5xl font-semibold'> Projects. </h1>
         </div>
     </div>
 </div>
@@ -58,11 +50,11 @@
         min-height: 100vh;
         height: fit-content;
         position: relative;
-        background-color: #9DC7E8;
     }
     .home-page {
         width: 100%;
         height: 100%;
+        display: flex;
     }
     .profile {
         width: 50%;
@@ -90,22 +82,6 @@
         justify-content: center;
     }
     
-    .tech-stack li {
-        width: fit-content;
-        height: 0%;
-        margin: 0.5vh 0.5vw 0.5vh 0.5vw;
-        padding: 1vh 1vw 1vh 1vw;  
-        background-color: white;
-        border-radius: 25px;
-    }
-    .tech-stack li img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        margin: 0 auto 0 auto;
-        padding: 0.5vh 0.5vw 0.5vh 0.5vw;
-
-    }
     @media (max-width: 900px) {
         .full-page {
             height: 100%;
@@ -134,5 +110,11 @@
             border-style: solid;
             border-color: white;
         }
+    }
+    .projects {
+        width: 100%;
+        display: flex;
+        padding: 2rem;
+        color: white;
     }
 </style>

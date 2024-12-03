@@ -1,8 +1,8 @@
 <script lang='ts'>
     import { onMount } from "svelte";
 
-    let weeklyCash: (string | '')[] = Array(7).fill('');
-    let weeklyCredit: (string | '')[] = Array(7).fill('');
+    let weeklyCash: (string)[] = Array(7).fill('');
+    let weeklyCredit: (string)[] = Array(7).fill('');
     let cashInput: Array<[(HTMLElement | null), boolean]> = Array(7).fill([null, true]);
     let creditInput: Array<[(HTMLElement | null), boolean]> = Array(7).fill([null, true]);
     let days_of_week: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -43,7 +43,9 @@
         let temp: number = 0;
         sum = "";
         for(let i = 0; i < weeklyCash.length; ++i) {
-            temp += (weeklyCash[i] === null || weeklyCash[i] === '' ? 0 : parseFloat(weeklyCash[i])) + (weeklyCredit[i] === null || weeklyCredit[i] === '' ? 0 : parseFloat(weeklyCredit[i]));
+            temp += (weeklyCash[i] === null || weeklyCash[i] === '' ? 0 : parseFloat(parseFloat(weeklyCash[i]).toFixed(2))) + 
+            (weeklyCredit[i] === null || weeklyCredit[i] === '' ? 0 : parseFloat(parseFloat(weeklyCredit[i]).toFixed(2)));
+
         }
         temp = Math.trunc(temp * 100) / 100
         let tempToString: string[] = temp.toString().split(".");
@@ -56,14 +58,14 @@
 
 </script>
 
-<div class='w-full h-[100%] bg-[#1b263b]'>
-    <ul class='w-full bg-[#1a4769] text-white flex flex-wrap'>
+<div class='w-full h-[100%]'>
+    <ul class='w-full bg-[#1d1d1d] text-white flex flex-wrap'>
         {#each days_of_week as day, i}
             <h1 class='day'> {day} </h1>
-            <div class='w-[90%] pt-1 pb-4 flex'>
-                <div class='w-[45%] mr-auto'>
-                    <p class='ml-3 font-semibold'> Cash </p>  
-                    <input id="cash-{i}" type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here" bind:value={weeklyCash[i]} 
+            <div class='w-full flex justify-between'>
+                <div class='w-full flex flex-col gap-1 mx-auto'>
+                    <p class='w-[85%] mx-auto font-semibold'> Cash </p>  
+                    <input id="cash-{i}" class='w-fit' type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here" bind:value={weeklyCash[i]} 
                         on:input={() => {
                         validateAmount(weeklyCash[i], i, "cash")
                         calcSum()}} />
@@ -71,9 +73,9 @@
                         <p class='warning'> ⚠ Warning: Input is invalid. Please use digits up to 2 decimal places. Calculation may be incorrect</p>
                     {/if}
                 </div>
-                <div class='w-[45%] ml-auto '>
-                    <p class='ml-3 font-semibold'> Credit </p>
-                    <input id="credit-{i}" type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here"  bind:value={weeklyCredit[i]} 
+                <div class='w-full flex flex-col gap-1 mx-auto'>
+                    <p class='w-[85%] mx-auto font-semibold'> Credit </p>
+                    <input id="credit-{i}" class='w-fit' type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here"  bind:value={weeklyCredit[i]} 
                     on:input={() => {
                         validateAmount(weeklyCredit[i], i, "credit")
                         calcSum()}} />
@@ -89,28 +91,27 @@
 
 <style>
     input {
-        width: 100%;
+        width: 85%;
+        margin: 0 auto 0 auto;
         padding: 0.25rem;
         border-radius: 5px;
         border: none;
-        margin: 0 0.75rem 0.5rem 0.75rem;
         color: black;
     }
     input:focus-visible {
-        outline: 3.5px solid #1296ee;
+        outline: 3.5px solid #000000;
     }
     .day {
         width: 100%;
-        padding-left: 0.75rem;
+        padding: 0.25rem 0 0.25rem 0.5rem;
         font-weight: 600;
         color: white;
-        border-width: 2px 0 2px 0;
-        border-color: #13324a;
-        background-color: #256594;
+
+        background-color: #2a2a2a;
     }
     .warning {
-        width: 100%;
-        margin-left: 0.75rem;
+        width: 85%;
+        margin: 0 auto 0 auto;
         padding: 0 0.5rem 0 0.25rem;
         font-size: calc(0.55vw + 0.55vh);
         text-align: center;
