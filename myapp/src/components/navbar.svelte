@@ -42,7 +42,7 @@
     <li class="w-fit text-[1.5rem] text-nowrap mr-auto my-auto"> <a href="/"> JASON CHAU </a> </li>
     <li class="nav-item"><a href="/"> HOME </a></li>
     <li class="nav-item"><a href="/tools"> TOOLS </a></li>
-    <li class="nav-item"> <a href="portfolio.pdf">PORTFOLIO</a></li>
+    <li class="nav-item"> <a href="/portfolio.pdf">PORTFOLIO</a></li>
   </ul>
   <ul class='w-fit h-full gap-2 flex my-auto'>
     <a href='https://github.com/ChowMeins'> <Github className="w-[24px] h-[24px]"/> </a>
@@ -56,7 +56,7 @@
     <ul class='w-full block'> 
       <li class="menu-bar"><a href="/" on:click={closeSideBar}> HOME </a> </li>
       <li class="menu-bar"><a href="/tools" on:click={closeSideBar}> TOOLS </a> </li>
-      <li class="menu-bar"><a href="portfolio.pdf" on:click={closeSideBar}> PORTFOLIO </a> </li>
+      <li class="menu-bar"><a href="/portfolio.pdf" on:click={closeSideBar}> PORTFOLIO </a> </li>
       <li class="menu-bar"><a href="https://github.com/ChowMeins" on:click={closeSideBar}> GITHUB </a> </li>
     </ul>
   </div>
