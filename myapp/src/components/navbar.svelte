@@ -42,14 +42,13 @@
     <li class="w-fit text-[1.5rem] text-nowrap mr-auto my-auto"> <a href="/"> JASON CHAU </a> </li>
     <li class="nav-item"><a href="/"> HOME </a></li>
     <li class="nav-item"><a href="/tools"> TOOLS </a></li>
-    <li class="nav-item">PORTFOLIO</li>
-    <li class="nav-item">PROJECTS</li>
-    <li id='hamburger-icon' bind:this={hamburgerIcon}><HamburgerIcon /></li>
+    <li class="nav-item"> <a href="portfolio.pdf">PORTFOLIO</a></li>
   </ul>
   <ul class='w-fit h-full gap-2 flex my-auto'>
-    <Github className="w-[24px] h-[24px]"/> 
-    <LinkedIn className="w-[24px] h-[24px]"/> 
+    <a href='https://github.com/ChowMeins'> <Github className="w-[24px] h-[24px]"/> </a>
+    <a href='/'> <LinkedIn className="w-[24px] h-[24px]"/> </a> 
   </ul>
+  <li id='hamburger-icon' bind:this={hamburgerIcon}><HamburgerIcon /></li>
 </div>
 
 <!-- Side Menu for smaller devices -->

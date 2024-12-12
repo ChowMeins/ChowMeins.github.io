@@ -11,6 +11,7 @@ export async function load() {
             publicUrl: files.publicUrl
         };
     });
-    console.log(publicUrls);
-    return { publicUrls };
+    const techStack = ['python', 'html', 'css', 'javascript', 'typescript', 'tailwind', 'svelte', 'firebase', 'supabase', 'git', 'github'];
+    //console.log(publicUrls);
+    return { publicUrls, techStack };
 }
