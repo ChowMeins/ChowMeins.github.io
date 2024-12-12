@@ -46,7 +46,6 @@
   </ul>
   <ul class='w-fit h-full gap-2 flex my-auto'>
     <a href='https://github.com/ChowMeins'> <Github className="w-[24px] h-[24px]"/> </a>
-    <a href='/'> <LinkedIn className="w-[24px] h-[24px]"/> </a> 
   </ul>
   <li id='hamburger-icon' bind:this={hamburgerIcon}><HamburgerIcon /></li>
 </div>
@@ -57,8 +56,8 @@
     <ul class='w-full block'> 
       <li class="menu-bar"><a href="/" on:click={closeSideBar}> HOME </a> </li>
       <li class="menu-bar"><a href="/tools" on:click={closeSideBar}> TOOLS </a> </li>
-      <li class="menu-bar"><a href="/" on:click={closeSideBar}> PORTFOLIO </a> </li>
-      <li class="menu-bar"><a href="/" on:click={closeSideBar}> PROJECTS </a> </li>
+      <li class="menu-bar"><a href="portfolio.pdf" on:click={closeSideBar}> PORTFOLIO </a> </li>
+      <li class="menu-bar"><a href="https://github.com/ChowMeins" on:click={closeSideBar}> GITHUB </a> </li>
     </ul>
   </div>
 {/if}
