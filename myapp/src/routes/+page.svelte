@@ -3,7 +3,7 @@
     import Java from "../components/svg/techIcons/java.svelte";
 
     export let data: any;
-    const images: [boolean, string, string][]= [[false, "demos/PokeTracker_demo.png", "demos/PokeTracker_demo.gif"], [false, "demos/Wizard101.png", "demos/Wizard101.gif"], [false, "demos/CometDash.png", "demos/CometDash.gif"]];
+    const images: [boolean, string, string][]= [[false, "demos/PokeTracker_demo.png", "demos/PokeTracker_demo.gif"], [false, "demos/Wizard101.png", "demos/Wizard101.gif"], [false, "demos/PokemonShinyHuntingBot.png", "demos/PokemonShinyHuntingBot.gif"], [false, "demos/CometDash.png", "demos/CometDash.gif"]];
     const techStack = new Map();
     data.publicUrls.forEach((element:any) => {
         const tech = element.name.substring(0, element.name.length - 4);
@@ -121,7 +121,7 @@
                         <li> <a href='https://github.com/ChowMeins/Pokemon-Shiny-Hunter-Bot'><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
                     </ul>
                 </h1>
-                <img src='' alt='Pokemon Shiny Hunting Bot Demo' class='w-fit max-xl:h-[320px]' on:mouseenter={() => images[0][0] = true} on:mouseleave={() => images[0][0] = false}/>
+                <img src={images[2][0] ? images[2][2] : images[2][1]} alt='Pokemon Shiny Hunting Bot Demo' class='w-fit max-xl:h-[320px]' on:mouseenter={() => images[2][0] = true} on:mouseleave={() => images[2][0] = false}/>
                 <p class='text-[18px] font-medium'> 
                     A Python script that sends an Arduino commands in to operate a Nintendo 3DS to shiny hunt Pokemon.
                     Detection methods included image comparison with OpenCV/NumPy and photoresistor to detect light intensity, 
@@ -141,7 +141,7 @@
                         <li> <a href='https://github.com/ZaneLeBlanc/Team16Project'><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
                     </ul>
                 </h1>
-                <img src={images[2][0] ? images[2][2] : images[2][1]} alt='PokeTracker Demo' class='w-fit max-xl:h-[320px]' on:mouseenter={() => images[2][0] = true} on:mouseleave={() => images[2][0] = false}/>
+                <img src={images[3][0] ? images[3][2] : images[3][1]} alt='PokeTracker Demo' class='w-fit max-xl:h-[320px]' on:mouseenter={() => images[3][0] = true} on:mouseleave={() => images[3][0] = false}/>
                 <p class='text-[18px] font-medium'> 
                     A game made in Unity in the style of a infinite-runner. Implemented infinite-level generation, including dynamic road and terrain creation,
                     a custom jump function with realistic gravitational physics to enhance the car's movement and gameplay mechanics.
