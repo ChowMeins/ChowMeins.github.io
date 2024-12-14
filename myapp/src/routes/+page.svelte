@@ -54,8 +54,8 @@
                 <h1 class='flex'> 
                     <p class='text-[24px] font-semibold'> PokeTracker </p> 
                     <ul class='flex gap-4 ml-auto'>
-                        <li> <a href='https://github.com/ChowMeins/ChowMeins.github.io'><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
-                        <li> <a href='http://pkmn-tracker.vercel.app/'><img src={techStack.get('internet')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
+                        <li> <a href='https://github.com/ChowMeins/PokeTracker' target="_blank"><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
+                        <li> <a href='http://pkmn-tracker.vercel.app/' target="_blank"><img src={techStack.get('internet')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
                     </ul>
                 </h1>
                 <img src={images[0][0] ? images[0][2] : images[0][1]} alt='PokeTracker Demo' class='w-fit max-xl:h-[320px]' on:mouseenter={() => images[0][0] = true} on:mouseleave={() => images[0][0] = false}/>
@@ -77,7 +77,7 @@
                 <h1 class='flex text-xl'> 
                     <p class='text-[24px] font-semibold'> Wizard101 Quiz Solver </p>         
                     <ul class='flex gap-4 ml-auto'>
-                        <li> <a href='https://github.com/ChowMeins/Wizard101-Quiz-Solver'><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
+                        <li> <a href='https://github.com/ChowMeins/Wizard101-Quiz-Solver' target="_blank"><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
                     </ul>
                 </h1>
                 <img src={images[1][0] ? images[1][2] : images[1][1]} alt='PokeTracker Demo' class='w-fit max-xl:h-[320px]' on:mouseenter={() => images[1][0] = true} on:mouseleave={() => images[1][0] = false}/>
@@ -100,7 +100,7 @@
                 <h1 class='flex'> 
                     <p class='text-[24px] font-semibold'> Musi To YouTube Playlist Converter </p> 
                     <ul class='flex gap-4 ml-auto'>
-                        <li> <a href='https://github.com/ChowMeins/Musi-to-YouTube-Playlist'><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
+                        <li> <a href='https://github.com/ChowMeins/Musi-to-YouTube-Playlist' target="_blank"><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
                     </ul>
                 </h1>
                 <img src='demos/MusiToYouTube.png' alt='Musi to YouTube playlist converter' class='w-fit max-xl:h-[320px]' on:mouseenter={() => images[0][0] = true} on:mouseleave={() => images[0][0] = false}/>
@@ -118,7 +118,7 @@
                 <h1 class='flex text-xl font-semibold'> 
                     <p> Pokemon Shiny Hunting Bot </p> 
                     <ul class='flex gap-4 ml-auto'>
-                        <li> <a href='https://github.com/ChowMeins/Pokemon-Shiny-Hunter-Bot'><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
+                        <li> <a href='https://github.com/ChowMeins/Pokemon-Shiny-Hunter-Bot' target="_blank"><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
                     </ul>
                 </h1>
                 <img src={images[2][0] ? images[2][2] : images[2][1]} alt='Pokemon Shiny Hunting Bot Demo' class='w-fit max-xl:h-[320px]' on:mouseenter={() => images[2][0] = true} on:mouseleave={() => images[2][0] = false}/>
@@ -138,7 +138,7 @@
                 <h1 class='flex text-xl font-semibold'> 
                     <p> Comet Dash </p> 
                     <ul class='flex gap-4 ml-auto'>
-                        <li> <a href='https://github.com/ZaneLeBlanc/Team16Project'><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
+                        <li> <a href='https://github.com/ZaneLeBlanc/Team16Project' target="_blank"><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
                     </ul>
                 </h1>
                 <img src={images[3][0] ? images[3][2] : images[3][1]} alt='PokeTracker Demo' class='w-fit max-xl:h-[320px]' on:mouseenter={() => images[3][0] = true} on:mouseleave={() => images[3][0] = false}/>
@@ -157,7 +157,7 @@
                 <h1 class='flex text-xl font-semibold'> 
                     <p> Aggregate Shopping Cart </p> 
                     <ul class='flex gap-4 ml-auto'>
-                        <li> <a href='https://github.com/ChosenQuill/uARexpert'><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
+                        <li> <a href='https://github.com/ChosenQuill/uARexpert' target="_blank"><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
                     </ul>
                 </h1>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/_V5PumrW9W8?si=E_mkklOrUBclv6du" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -177,7 +177,7 @@
                 <h1 class='flex text-xl font-semibold'> 
                     <p> My Portfolio Website </p> 
                     <ul class='flex gap-4 ml-auto'>
-                        <li> <a href='https://github.com/ChowMeins/ChowMeins.github.io'><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
+                        <li> <a href='https://github.com/ChowMeins/ChowMeins.github.io' target="_blank"><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
                         <li> <a href='https://chowmeins.github.io/'><img src={techStack.get('internet')} alt="Website" class='w-[32px] h-[32px]'></a></li>
                     </ul>
                 </h1>
