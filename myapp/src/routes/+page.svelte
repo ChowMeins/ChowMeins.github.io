@@ -160,7 +160,7 @@
                         <li> <a href='https://github.com/ChosenQuill/uARexpert' target="_blank"><img src={techStack.get('github_white')} alt="GitHub" class='w-[32px] h-[32px]'></a></li>
                     </ul>
                 </h1>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/_V5PumrW9W8?si=E_mkklOrUBclv6du" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe class='w-full' src="https://www.youtube.com/embed/_V5PumrW9W8?si=E_mkklOrUBclv6du" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 <p class='text-[18px] font-medium'> 
                     Sponsored by uARExpert, the Aggregate Shopping Cart provides a seamless virtual shopping cart between users and experts alike using React, PostgreSQL, and Chakra UI. 
                     The shopping cart will aggregate and source products/services, configuring it to provide multiple rounds of review before the products are sourced. 

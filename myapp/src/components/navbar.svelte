@@ -11,7 +11,6 @@
   let menuOpen: boolean = false;
 
   onMount(() => {
-
     open.subscribe((val: boolean) => {
       menuOpen = val;
     });
@@ -30,30 +29,26 @@
   function closeSideBar() {
     open.set(false);
   }
-
-
-
-
 </script>
 
 <!--  Navbar -->
-<div class="w-full h-full flex gap-8 bg-[#151515] p-8 z-[1]">
+<div class="w-full h-full flex gap-8 bg-[#151515] px-5 py-8 z-[1]">
   <ul class="navbar w-full h-full oswald text-white flex">
     <li class="w-fit text-[1.5rem] text-nowrap mr-auto my-auto"> <a href="/"> JASON CHAU </a> </li>
     <li class="nav-item"><a href="/"> HOME </a></li>
     <li class="nav-item"><a href="/tools"> TOOLS </a></li>
-    <li class="nav-item"> <a href="/portfolio.pdf">PORTFOLIO</a></li>
+    <li class="nav-item"><a href="/portfolio.pdf">PORTFOLIO</a></li>
   </ul>
   <ul class='w-fit h-full gap-2 flex my-auto'>
     <a href='https://github.com/ChowMeins'> <Github className="w-[24px] h-[24px]"/> </a>
   </ul>
-  <li id='hamburger-icon' bind:this={hamburgerIcon}><HamburgerIcon /></li>
+  <li id='hamburger-icon' bind:this={hamburgerIcon}><HamburgerIcon className='w-[32px] h-[32px]' /></li>
 </div>
 
 <!-- Side Menu for smaller devices -->
 {#if menuOpen}
   <div id='sidebar' bind:this={sidebar} class='oswald' in:fly={{duration: 500, y: 0}} out:fly={{duration: 500, y: 0}}>
-    <ul class='w-full block'> 
+    <ul class='w-full flex flex-col'> 
       <li class="menu-bar"><a href="/" on:click={closeSideBar}> HOME </a> </li>
       <li class="menu-bar"><a href="/tools" on:click={closeSideBar}> TOOLS </a> </li>
       <li class="menu-bar"><a href="/portfolio.pdf" on:click={closeSideBar}> PORTFOLIO </a> </li>
@@ -75,7 +70,7 @@
     width: 100%;
     background-color: #0d0d0d;
     position: absolute;
-    right: 0;
+    left: 0;
     z-index: 1;
     border-width: 5px 5px 5px 5px;
     border-style: solid;
@@ -97,8 +92,8 @@
     text-align: center;
   }
   #hamburger-icon {
-    width: fit-content;
-    height: fit-content;
+    width: 32px;
+    height: 32px;
     margin: auto 0 auto 0;
     display: none;
   }

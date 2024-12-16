@@ -1,42 +1,42 @@
 <script lang='ts'>
-import {onMount} from "svelte";
-import {get} from "svelte/store";
-import {open} from "./store";
+  import {onMount} from "svelte";
+  import {get} from "svelte/store";
+  import {open} from "./store";
+  export let className = "";
+  let boxes: (HTMLElement | null)[] = [];
+  let isOpen: boolean;
 
-let boxes: (HTMLElement | null)[] = [];
-let isOpen: boolean;
-
-onMount(() => {
-  boxes = [document.getElementById("box1"), document.getElementById("box2"), document.getElementById("box3")];
-  open.subscribe((val) => {
-    isOpen = val;
+  onMount(() => {
+    boxes = [document.getElementById("box1"), document.getElementById("box2"), document.getElementById("box3")];
+    open.subscribe((val) => {
+      isOpen = val;
+    });
   });
-});
 
-$: animate($open);
+  $: animate($open);
 
-function animate(bool: boolean) : void {
-  if (bool) {
-    if (boxes[0] && boxes[1] && boxes[2]) {
-      boxes[0].style.transform = 'translateX(19px) rotate(45deg)';
-      boxes[1].style.width = '0';
-      boxes[1].style.opacity = '0';
-      boxes[2].style.transform = 'translate(-18px, 22px) rotate(-45deg)';
+  function animate(bool: boolean) : void {
+    if (bool) {
+      if (boxes[0] && boxes[1] && boxes[2]) {
+        boxes[0].style.transform = 'translateX(19px) rotate(45deg)';
+        boxes[1].style.width = '0';
+        boxes[1].style.opacity = '0';
+        boxes[2].style.transform = 'translate(-18px, 22px) rotate(-45deg)';
+      }
+    }
+    if (!bool) {
+      if (boxes[0] && boxes[1] && boxes[2]) {
+        boxes[0].style.transform = 'rotate(0deg) translateX(0px) ';
+        boxes[1].style.width = '73';
+        boxes[1].style.opacity = '1';
+        boxes[2].style.transform = 'rotate(0deg) translate(0px, 0px) ';
+      }
     }
   }
-  if (!bool) {
-    if (boxes[0] && boxes[1] && boxes[2]) {
-      boxes[0].style.transform = 'rotate(0deg) translateX(0px) ';
-      boxes[1].style.width = '73';
-      boxes[1].style.opacity = '1';
-      boxes[2].style.transform = 'rotate(0deg) translate(0px, 0px) ';
-    }
-  }
-}
 </script>
 
 <button class='hamburger' on:click={() => open.update((o) => !o)}>
-  <svg class='w-[5vh] h-[5vh] ml-auto'
+  <svg class={className}
 
     viewBox="0 0 75 50"
     fill="none"
