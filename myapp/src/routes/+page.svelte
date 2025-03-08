@@ -24,7 +24,7 @@
         <div class='profile'>
             <div class='w-full h-full flex row flex-wrap'>
                 <p class='w-full h-fit py-4 text-white font-semibold text-5xl text-center drop-shadow-md'> Hello, I'm Jason. 👋</p>
-                <img src='/hamster-camera.gif' class='profile-pic border-3 border-[#FFFFFF] rounded-full drop-shadow-xl' alt='My IRL Pic'/>
+                <img src='/pc_pic.png' class='profile-pic border-3 border-[#FFFFFF] rounded-full drop-shadow-xl' alt='My IRL Pic'/>
             </div>
         </div>
         <!-- Right side of home page -->
