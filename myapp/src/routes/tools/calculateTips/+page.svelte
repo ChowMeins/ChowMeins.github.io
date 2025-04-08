@@ -1,92 +1,58 @@
 <script lang='ts'>
     import { onMount } from "svelte";
-
-    let weeklyCash: (string)[] = Array(7).fill('');
-    let weeklyCredit: (string)[] = Array(7).fill('');
-    let cashInput: Array<[(HTMLElement | null), boolean]> = Array(7).fill([null, true]);
-    let creditInput: Array<[(HTMLElement | null), boolean]> = Array(7).fill([null, true]);
-    let days_of_week: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    let sum: string = "$0";
-
+    import { validateAmount, calculateTotal } from "$lib/utils/tips";
+    class Tips {
+        cash: (number | null)[] = [null, null, null, null, null, null, null];
+        credit: (number | null)[] = [null, null, null, null, null, null, null];
+        cashInput: [HTMLElement | null, boolean][] = [[null, true], [null, true], [null, true], [null, true], [null, true], [null, true], [null, true]];
+        creditInput: [HTMLElement | null, boolean][] = [[null, true], [null, true], [null, true], [null, true], [null, true], [null, true], [null, true]];
+        days_of_week: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        sum: string = "0.00";
+    }   
+    let tips = new Tips();
     onMount(() => {
-        for(let i = 0; i < cashInput.length; ++i) {
-            cashInput[i] = [document.getElementById('cash-' + i), true];
-            creditInput[i] = [document.getElementById('credit-' + i), true];
+        for(let i = 0; i < 7; ++i) {
+            tips.cashInput[i][0] = document.getElementById('cash-' + i);
+            tips.creditInput[i][0] = document.getElementById('credit-' + i);
         }
     });
-
-    function validateAmount(amount: string, index: number, type: string): boolean {
-        if(amount == null) amount = "0";
-        let amountParts: string[] = amount.toString().split(".");
-        if (amountParts.length === 1 || (amountParts.length === 2 && amountParts[1].length <= 2)) {
-            if(type === "cash") {
-                cashInput[index][1] = true;
-            }
-            else if (type === "credit") { 
-                creditInput[index][1] = true;
-            }
-            return true;
-        }
-        else if (amountParts.length === 2 && amountParts[1].length > 2) {
-            if(type === "cash") {
-                cashInput[index][1] = false;
-            }
-            else if (type === "credit") { 
-                creditInput[index][1] = false;
-            }
-            return false;
-        }
-        return true;
-    }
-
-    function calcSum(): void {
-        let temp: number = 0;
-        sum = "";
-        for(let i = 0; i < weeklyCash.length; ++i) {
-            temp += (weeklyCash[i] === null || weeklyCash[i] === '' ? 0 : parseFloat(parseFloat(weeklyCash[i]).toFixed(2))) + 
-            (weeklyCredit[i] === null || weeklyCredit[i] === '' ? 0 : parseFloat(parseFloat(weeklyCredit[i]).toFixed(2)));
-
-        }
-        temp = Math.trunc(temp * 100) / 100
-        let tempToString: string[] = temp.toString().split(".");
-        if (tempToString.length === 2 && tempToString[1].length === 1) {
-            tempToString[1] += "0"
-        }
-
-        sum = "$" + tempToString.join(".");
-    }
-
 </script>
 
 <div class='w-full h-[100%]'>
     <ul class='w-full bg-[#1d1d1d] text-white flex flex-wrap'>
-        {#each days_of_week as day, i}
+        {#each tips.days_of_week as day, i}
             <h1 class='day'> {day} </h1>
             <div class='w-full flex justify-between'>
                 <div class='w-full flex flex-col gap-1 mx-auto'>
                     <p class='w-[85%] mx-auto font-semibold'> Cash </p>  
-                    <input id="cash-{i}" class='w-fit' type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here" bind:value={weeklyCash[i]} 
+                    <input id="cash-{i}" class='w-fit' type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here" bind:value={tips.cash[i]} 
                         on:input={() => {
-                        validateAmount(weeklyCash[i], i, "cash")
-                        calcSum()}} />
-                    {#if cashInput[i][1] === false}
+                        tips.cashInput[i][1] = validateAmount(tips.cash[i], i)
+                        if (tips.cashInput[i][1] === true) {
+                            tips.sum = calculateTotal(tips.cash, tips.credit);
+                        }
+                        }} />
+                    {#if tips.cashInput[i][1] === false}
                         <p class='warning'> ⚠ Warning: Input is invalid. Please use digits up to 2 decimal places. Calculation may be incorrect</p>
                     {/if}
                 </div>
                 <div class='w-full flex flex-col gap-1 mx-auto'>
                     <p class='w-[85%] mx-auto font-semibold'> Credit </p>
-                    <input id="credit-{i}" class='w-fit' type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here"  bind:value={weeklyCredit[i]} 
+                    <input id="credit-{i}" class='w-fit' type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here"  bind:value={tips.credit[i]} 
                     on:input={() => {
-                        validateAmount(weeklyCredit[i], i, "credit")
-                        calcSum()}} />
-                    {#if creditInput[i][1] === false}
+                        tips.creditInput[i][1] = validateAmount(tips.credit[i], i);
+                        if (tips.creditInput[i][1] === true) {
+                            tips.sum = calculateTotal(tips.cash, tips.credit);
+                        }
+                        }} />
+                    {#if tips.creditInput[i][1] === false}
                         <p class='warning'> ⚠ Warning: Invalid Input. Please use digits up to 2 decimal places. Calculation may be incorrect</p>
                     {/if}
                 </div>
             </div>
         {/each}
     </ul>
-    <p class='day'> Total: {sum} </p>
+    <p class='day'> Total: {tips.sum} </p>
 </div>
 
 <style>
