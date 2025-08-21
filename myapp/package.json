@@ -15,14 +15,14 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.3.1",
-		"@sveltejs/adapter-static": "^3.0.8",
-		"@sveltejs/kit": "^2.27.0",
+		"@sveltejs/adapter-static": "^3.0.9",
+		"@sveltejs/kit": "^2.36.1",
 		"@sveltejs/vite-plugin-svelte": "^4.0.4",
 		"autoprefixer": "^10.4.21",
 		"gh-pages": "^6.3.0",
 		"postcss": "^8.5.6",
-		"svelte": "^5.37.2",
-		"svelte-check": "^4.3.0",
+		"svelte": "^5.38.2",
+		"svelte-check": "^4.3.1",
 		"tailwindcss": "^3.4.17",
 		"typescript": "^5.9.2",
 		"vite": "^5.4.19",
@@ -30,7 +30,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@supabase/supabase-js": "^2.53.0",
+		"@supabase/supabase-js": "^2.55.0",
 		"dotenv": "^16.6.1",
 		"firebase": "^10.14.1",
 		"supabase": "^1.226.4"
