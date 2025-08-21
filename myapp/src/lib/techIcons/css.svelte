@@ -1,8 +1,9 @@
 <script>
-    export let className;
+  export let className;
 </script>
 
-<svg xmlns="http://www.w3.org/2000/svg" class={className} width="1000" height="1000" viewBox="0 0 1000 1000" role="img" aria-labelledby="css-logo-title css-logo-description">
+<!-- prettier-ignore  -->
+<svg class={className} xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000" role="img" aria-labelledby="css-logo-title css-logo-description">
   <title id="css-logo-title">CSS Logo</title>
   <desc id="css-logo-description">A purple square with rounded corners and the letters CSS inside in white</desc>
   <path id="bg" fill="#639" d="M0 0H840A160 160 0 0 1 1000 160V840A160 160 0 0 1 840 1000H160A160 160 0 0 1 0 840V0Z"/>
