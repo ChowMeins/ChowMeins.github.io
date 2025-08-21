@@ -36,8 +36,8 @@
     <li class="w-fit text-[1.5rem] text-nowrap mr-auto my-auto"> <a href="/"> JASON CHAU </a> </li>
     <li class="nav-item"><a href="/"> HOME </a></li>
     <li class="nav-item"><a href="/tools"> TOOLS </a></li>
-    <li class="nav-item"><a href="/portfolio.pdf" target="_blank" rel="noopener">PORTFOLIO</a></li>
-    <li class="nav-item"><a href='https://github.com/ChowMeins'> <GitHub className="w-[24px] h-[24px]"/> </a> </li>
+    <li class="nav-item"><a href="/resume.pdf" target="_blank" rel="noopener">PORTFOLIO</a></li>
+    <li class="nav-item"><a href='https://github.com/ChowMeins' target="_blank" rel="noopener"> <GitHub className="w-[24px] h-[24px]"/> </a> </li>
   </ul>
   <li id='hamburger-icon' bind:this={hamburgerIcon}><HamburgerIcon className='w-[32px] h-[32px]' /></li>
 </div>
@@ -48,8 +48,8 @@
     <ul class='w-full flex flex-col'> 
       <li class="menu-bar"><a href="/" on:click={closeSideBar}> HOME </a> </li>
       <li class="menu-bar"><a href="/tools" on:click={closeSideBar}> TOOLS </a> </li>
-      <li class="menu-bar"><a href="/portfolio.pdf" target="_blank" rel="noopener" on:click={closeSideBar}> PORTFOLIO </a> </li>
-      <li class="menu-bar"><a href="https://github.com/ChowMeins" on:click={closeSideBar}> GITHUB </a> </li>
+      <li class="menu-bar"><a href="/resume.pdf" target="_blank" rel="noopener" on:click={closeSideBar}> PORTFOLIO </a> </li>
+      <li class="menu-bar"><a href="https://github.com/ChowMeins" target="_blank" rel="noopener" on:click={closeSideBar}> GITHUB </a> </li>
     </ul>
   </div>
 {/if}
