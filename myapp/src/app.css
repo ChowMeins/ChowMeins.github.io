@@ -4,6 +4,7 @@
 
 html {
     background-color: #0d0d0d;
+    scroll-behavior: smooth;
 }
 .roboto-bold {
     font-family: "Roboto", system-ui;

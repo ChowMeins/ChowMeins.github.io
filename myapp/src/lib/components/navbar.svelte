@@ -3,8 +3,7 @@
   import HamburgerIcon from "./hamburgerIcon.svelte";
   import { open } from "./store";
   import { fly } from "svelte/transition";
-  import Github from "./svg/github.svelte";
-  import LinkedIn from "./svg/linkedIn.svelte";
+  import GitHub from "$lib/techIcons/github-white.svelte";
 
   let sidebar : (HTMLElement | null) = null;
   let hamburgerIcon : (HTMLElement | null) = null;
@@ -32,15 +31,13 @@
 </script>
 
 <!--  Navbar -->
-<div class="w-full h-full flex gap-8 bg-[#151515] px-5 py-8 z-[1]">
+<div class="w-full h-full flex gap-8 bg-[#151515] px-[24rem] max-xl:px-[8rem] max-md:px-[4rem] max-sm:px-[2rem] py-4 z-[1]">
   <ul class="navbar w-full h-full oswald text-white flex">
     <li class="w-fit text-[1.5rem] text-nowrap mr-auto my-auto"> <a href="/"> JASON CHAU </a> </li>
     <li class="nav-item"><a href="/"> HOME </a></li>
     <li class="nav-item"><a href="/tools"> TOOLS </a></li>
     <li class="nav-item"><a href="/portfolio.pdf">PORTFOLIO</a></li>
-  </ul>
-  <ul class='w-fit h-full gap-2 flex my-auto'>
-    <a href='https://github.com/ChowMeins'> <Github className="w-[24px] h-[24px]"/> </a>
+    <li class="nav-item"><a href='https://github.com/ChowMeins'> <GitHub className="w-[24px] h-[24px]"/> </a> </li>
   </ul>
   <li id='hamburger-icon' bind:this={hamburgerIcon}><HamburgerIcon className='w-[32px] h-[32px]' /></li>
 </div>
