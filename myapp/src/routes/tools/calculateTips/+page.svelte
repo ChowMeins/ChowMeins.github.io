@@ -18,66 +18,70 @@
     });
 </script>
 
-<div class='w-full h-[100%]'>
-    <ul class='w-full bg-[#1d1d1d] text-white flex flex-wrap'>
+<div class='w-full h-[100%] px-[24rem] max-2xl:px-[8rem] max-xl:px-[6rem] max-md:px-[4rem] max-sm:px-[2rem]'>
+    <div class='w-full py-2 text-white flex flex-wrap gap-2'>
         {#each tips.days_of_week as day, i}
-            <h1 class='day'> {day} </h1>
-            <div class='w-full flex justify-between'>
-                <div class='w-full flex flex-col gap-1 mx-auto'>
-                    <p class='w-[85%] mx-auto font-semibold'> Cash </p>  
-                    <input id="cash-{i}" class='w-fit' type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here" bind:value={tips.cash[i]} 
+            <div class='w-full flex flex-col mx-auto gap-1'>
+                <p class='day px-3 py-0.5'> {day} </p>
+                <div class='w-full grid grid-cols-2 px-1 pb-1.5 gap-2 bg-[#b9b9b9] bg-opacity-[0.1] rounded-md'>
+                    <!--- Cash Input -->
+                    <div class='w-full flex flex-col mx-auto'>
+                        <p class='w-fit mx-auto font-semibold'> Cash </p>  
+                        <input id="cash-{i}" class='w-fit' type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here..." bind:value={tips.cash[i]} 
+                            on:input={() => {
+                            tips.cashInput[i][1] = validateAmount(tips.cash[i], i)
+                            if (tips.cashInput[i][1] === true) {
+                                tips.sum = calculateTotal(tips.cash, tips.credit);
+                            }
+                            }} />
+                        {#if tips.cashInput[i][1] === false}
+                            <p class='warning'> ⚠ Warning: Input is invalid. Please use digits up to 2 decimal places.</p>
+                        {/if}
+                    </div>
+                    <!--- Credit Input -->
+                    <div class='w-full mx-auto'>
+                        <p class='w-fit mx-auto font-semibold'> Credit </p>
+                        <input id="credit-{i}" class='w-fit' type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here..."  bind:value={tips.credit[i]} 
                         on:input={() => {
-                        tips.cashInput[i][1] = validateAmount(tips.cash[i], i)
-                        if (tips.cashInput[i][1] === true) {
-                            tips.sum = calculateTotal(tips.cash, tips.credit);
-                        }
-                        }} />
-                    {#if tips.cashInput[i][1] === false}
-                        <p class='warning'> ⚠ Warning: Input is invalid. Please use digits up to 2 decimal places. Calculation may be incorrect</p>
-                    {/if}
-                </div>
-                <div class='w-full flex flex-col gap-1 mx-auto'>
-                    <p class='w-[85%] mx-auto font-semibold'> Credit </p>
-                    <input id="credit-{i}" class='w-fit' type="number" pattern="[0-9]*" inputmode="decimal" placeholder="Enter the total here"  bind:value={tips.credit[i]} 
-                    on:input={() => {
-                        tips.creditInput[i][1] = validateAmount(tips.credit[i], i);
-                        if (tips.creditInput[i][1] === true) {
-                            tips.sum = calculateTotal(tips.cash, tips.credit);
-                        }
-                        }} />
-                    {#if tips.creditInput[i][1] === false}
-                        <p class='warning'> ⚠ Warning: Invalid Input. Please use digits up to 2 decimal places. Calculation may be incorrect</p>
-                    {/if}
+                            tips.creditInput[i][1] = validateAmount(tips.credit[i], i);
+                            if (tips.creditInput[i][1] === true) {
+                                tips.sum = calculateTotal(tips.cash, tips.credit);
+                            }
+                            }} />
+                        {#if tips.creditInput[i][1] === false}
+                            <p class='warning'> ⚠ Warning: Invalid Input. Please use digits up to 2 decimal places.</p>
+                        {/if}
+                    </div>
                 </div>
             </div>
         {/each}
-    </ul>
-    <p class='day'> Total: {tips.sum} </p>
+    </div>
+    <p class='day px-3'> Total: {tips.sum} </p>
 </div>
 
 <style>
     input {
-        width: 85%;
+        width: 100%;
         margin: 0 auto 0 auto;
         padding: 0.25rem;
-        border-radius: 5px;
-        border: none;
+        border-radius: 0.4rem;
         color: black;
+        font-size: 1rem;
     }
-    input:focus-visible {
-        outline: 3.5px solid #000000;
+    input:focus {
+        outline: 2px solid #1ca2f0;
     }
     .day {
-        width: 100%;
-        padding: 0.25rem 0 0.25rem 0.5rem;
+        width: fit-content;
+        margin: 0 auto 0 auto;
+        border-radius: 0.4rem;
+        text-align: center;
         font-weight: 600;
         color: white;
-
-        background-color: #2a2a2a;
+        background-color: #b9b9b932;
     }
     .warning {
-        width: 85%;
-        margin: 0 auto 0 auto;
+        width: 100%;
         padding: 0 0.5rem 0 0.25rem;
         font-size: calc(0.55vw + 0.55vh);
         text-align: center;
