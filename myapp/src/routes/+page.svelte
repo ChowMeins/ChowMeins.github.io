@@ -133,8 +133,8 @@
 
 
 <!-- https://coolors.co/palette/0d1b2a-1b263b-415a77-778da9-e0e1dd -->
-<div class="full-page">
-	<div class="px-[24rem] py-[4rem] max-2xl:px-[8rem] max-xl:px-[6rem] max-md:px-[4rem] max-sm:px-[2rem] max-sm:py-8 text-left max-sm:text-center flex flex-col gap-8 items-center justify-center">
+<div class="w-full flex">
+	<div class="w-full flex px-[24rem] py-[4rem] max-2xl:px-[8rem] max-xl:px-[6rem] max-md:px-[4rem] max-sm:px-[2rem] max-sm:py-8 text-left max-sm:text-center flex flex-col gap-8 items-center justify-center">
 		<!-- Introduction -->
 		<div class="w-full h-full py-4 flex flex-col flex-wrap">
 			<p class= "py-4 text-white font-semibold text-3xl drop-shadow-md"> Hello, my name is </p>
@@ -163,8 +163,8 @@
 			<p class="w-fit px-6 max-sm:mx-auto text-[3rem] text-white font-semibold bg-gray-700 bg-opacity-[0.5] p-2 rounded-2xl"> Projects </p>
 			<div class="flex flex-col flex-wrap justify-start max-sm:justify-center gap-32">
 				{#each [...demos.entries()] as [projectName, project]}
-					<div class="w-fit max-sm:mx-auto flex max-md:flex-col gap-4 bg-gray-700 bg-opacity-[0.5] p-4 rounded-xl shadow-lg">
-						<div class='w-[36rem] max-md:w-full h-full max-sm:mx-auto rounded-md'>
+					<div class="w-full max-sm:mx-auto flex max-lg:flex-col gap-4 bg-gray-700 bg-opacity-[0.5] p-4 rounded-xl shadow-lg">
+						<div class='w-[36rem] max-lg:w-full h-full max-sm:mx-auto rounded-md'>
 						{#if project.images && project.images.length > 0}
 							<img class='w-full rounded-md' src="/demos/{project.images[0]}" alt="">
 						{:else if project.videos && project.videos.length > 0}
@@ -172,7 +172,7 @@
 						{/if}
 						</div>
 						<!-- Project Description -->
-						<div class="w-[36rem] max-md:w-full flex flex-col gap-4 font-semibold text-[1.5rem] max-sm:text-[1.25rem] text-white bg-gray-900 bg-opacity-[0.5] p-4 rounded-xl">
+						<div class="w-full flex flex-col gap-4 font-semibold text-[1.5rem] max-sm:text-[1.25rem] text-white bg-gray-900 bg-opacity-[0.5] p-4 rounded-xl">
 							<p class='w-fit max-sm:mx-auto bg-gray-700 bg-opacity-[0.5] p-2 rounded-xl'> {projectName} </p>
 							<p class='text-[1rem] text-left flex flex-row'> {project.description} </p>
 							<div class="w-fit mt-auto flex flex-row bg-gray-700 bg-opacity-[0.5] rounded-xl">
