@@ -210,9 +210,9 @@
 						<!-- Project Description -->
 						<div class="w-full lg:w-1/3 flex flex-col gap-4 font-semibold text-[1.5rem] max-sm:text-[1.25rem] text-white bg-gray-900 bg-opacity-[0.5] p-4 rounded-xl">
 							<div class='flex flex-row gap-4'>
-								<p class='w-fit max-sm:mx-auto bg-gray-700 bg-opacity-[0.5] p-2 rounded-xl'>{projectName}</p>
+								<p class='w-fit h-fit bg-gray-700 bg-opacity-[0.5] p-2 rounded-xl'>{projectName}</p>
 								{#if project.link}
-									<a class='w-fit h-fit p-2 ml-auto flex bg-opacity-[0.5] hover:bg-gray-700 rounded-full' href={project.link} target="_blank" rel="noopener"> <GitHub className="w-[2.5rem] h-fit"/> </a>
+									<a class='w-fit h-fit p-2 ml-auto flex bg-opacity-[0.5] hover:bg-gray-700 rounded-full' href={project.link} target="_blank" rel="noopener"> <GitHub className="w-[2.5rem] h-[2.5rem]"/> </a>
 								{/if}
 							</div>
 							<p class='text-[1rem] text-left flex flex-row'>{project.description}</p>
