@@ -19,6 +19,9 @@
 	import Cpp from "$lib/techIcons/c++.svelte";
 	import Csharp from "$lib/techIcons/csharp.svelte";
 	import Unity from "$lib/techIcons/unity.svelte";
+	import Docker from "$lib/techIcons/docker.svelte";
+	import GithubBlack from "$lib/techIcons/github-black.svelte";
+	import GithubWhite from "$lib/techIcons/github-white.svelte";
 
 	interface TechIconProps {
 		className: string;
@@ -44,15 +47,17 @@
 		raspberryPi: RaspberryPi,
 		arduino: Arduino,
 		bash: Bash,
-		unity: Unity
+		unity: Unity,
+		docker: Docker,
 	}
 
-	const demos: Map<string, {description: string, images?: string[], videos?: string[], techStack?: string[]}> = new Map([
+	const demos: Map<string, {description: string, link?: string, images?: string[], videos?: string[], techStack?: string[]}> = new Map([
     [
       'PokeTracker',
       {
         description: "A web application for Pokémon enthusiasts to track their shiny hunting progress. Built with SvelteKit, TypeScript, Tailwind, and Firebase, it features real-time data management, optimized Pokémon image loading via PokeAPI, EV tracking, and secure user authentication. With a responsive designed interface ensure a seamless experience for all platforms.",
-        images: ['PokeTracker.png', 'PokeTracker.gif'],
+        link: "https://github.com/ChowMeins/PokeTracker",
+		images: ['PokeTracker.png', 'PokeTracker.gif'],
 		techStack: [
 		 	"svelte",
 			"ts",
@@ -65,7 +70,8 @@
       'Pokemon Shiny Hunting Bot',
       {
         description: 'A Python script that sends an Arduino commands in to operate a Nintendo 3DS to shiny hunt Pokemon. Detection methods included image comparison with OpenCV/NumPy and photoresistor to detect light intensity, while servo motors press buttons to automate dialogue interactions and encounters.',
-        images: ['PokemonShinyHuntingBot.png', 'PokemonShinyHuntingBotDemo.gif'],
+        link: "https://github.com/ChowMeins/Pokemon-Shiny-Hunter-Bot",
+		images: ['PokemonShinyHuntingBot.png', 'PokemonShinyHuntingBotDemo.gif'],
 		techStack: [
 			"python",
 			"arduino",
@@ -73,11 +79,26 @@
 		]
       }
     ],
+	[
+		'Hoyoverse Daily Check-In Automation Script',
+		{
+			description: 'A Python script that automates the daily check-in process for Genshin Impact, Honkai: Star Rail, and Zenless Zone Zero. Using Playwright to interact with the web interface, the script logs in to the user account and completes the check-in process, ensuring users never miss out on their daily rewards. Deployed using Docker on a Raspberry Pi for daily execution.',
+			link: "https://github.com/ChowMeins/Hoyoverse-Daily-Check-In-Bot",
+			images: ['HoyoverseCheckIn.png'],
+			techStack: [
+				'python',
+				'bash',
+				'raspberryPi',
+				'docker'
+			]
+		}
+	],
     [
       'Wizard101 Quiz Solver',
       {
         description: "A Python script that allows users to automatically completed trivia for crowns (in-game currency). The Selenium package is used to automate web browser interactions to both click and navigate through the questions. OpenAI\'s whisper (an automatic speech recognition system) allows us to bypass the reCAPTCHA verification pop-ups. Using a bash script hosted on a Raspberry Pi, this program can be set to run daily.",
-        images: ['Wizard101.png', 'wizard101.gif'],
+        link: "https://github.com/ChowMeins/Wizard101-Quiz-Solver",
+		images: ['Wizard101.png', 'wizard101.gif'],
 		techStack: [
 			"python"
 		]
@@ -87,7 +108,8 @@
       'Musi to YouTube Playlist Converter',
       {
         description: 'A Python script that converts playlists from the mobile app Musi to YouTube using the following: Selenium to execute a headless chrome web driver, Beautiful Soup to scrape the YouTube links from the Musi URL, and the YouTube API to create and insert the songs into a new playlist.',
-        images: ['MusiToYouTube.png'],
+        link: "https://github.com/ChowMeins/Musi-to-YouTube-Playlist",
+		images: ['MusiToYouTube.png'],
 		techStack: [
 			"python"
 		]
@@ -97,7 +119,8 @@
       'Comet Dash',
       {
         description: 'A game made in Unity in the style of a infinite-runner. Implemented infinite-level generation, including dynamic road and terrain creation, a custom jump function with realistic gravitational physics to enhance the car\'s movement and gameplay mechanics. Optimized procedural generation for efficient performance, memory management, and smooth transitions between generated segments.',
-        images: ['CometDash.png', 'CometDashDemo.gif'],
+        link: "https://github.com/ZaneLeBlanc/Team16Project",
+		images: ['CometDash.png', 'CometDashDemo.gif'],
 		techStack: [
 			"unity",
 			"csharp"
@@ -108,7 +131,8 @@
       'Aggregate Shopping Cart',
       {
         description: 'Sponsored by uARExpert, the Aggregate Shopping Cart provides a seamless virtual shopping cart between users and experts alike using React, PostgreSQL, and Chakra UI. The shopping cart will aggregate and source products/services, configuring it to provide multiple rounds of review before the products are sourced. Main features include a user-friendly UI involving secure login functionality, account management capabilities, the ability to manage project pages, incorporation of shopping carts for each project page, and integration within a database.',
-        videos: ['https://www.youtube.com/embed/_V5PumrW9W8?si=nsu1_4d3ZYUCa53q'],
+        link: "https://github.com/ChosenQuill/uARexpert",
+		videos: ['https://www.youtube.com/embed/_V5PumrW9W8?si=nsu1_4d3ZYUCa53q'],
 		techStack: [
 			'react',
 			'ts',
@@ -120,23 +144,26 @@
       'Personal Portfolio Website',
       {
         description: 'A personal portfolio website built with SvelteKit, showcasing my projects, skills, and experience. The site features a responsive design and a clean layout to highlight my work effectively.',
-        images: ['PersonalPortfolio.png'],
+        link: "https://github.com/ChowMeins/ChowMeins.github.io",
+		images: ['PersonalPortfolio.png'],
 		techStack: [
 			'svelte',
 			'ts',
 			'tailwind',
 		]
       }
-    ]
+    ],
   ]);
+
+  let showModal = $state(false);
 </script>
 
 
 <!-- https://coolors.co/palette/0d1b2a-1b263b-415a77-778da9-e0e1dd -->
 <div class="w-full flex">
-	<div class="w-full flex px-[24rem] py-[4rem] max-2xl:px-[8rem] max-xl:px-[6rem] max-md:px-[4rem] max-sm:px-[2rem] max-sm:py-8 text-left max-sm:text-center flex flex-col gap-8 items-center justify-center">
+	<div class="w-full relative flex px-[24rem] py-[4rem] max-2xl:px-[8rem] max-xl:px-[6rem] max-md:px-[4rem] max-sm:px-[2rem] max-sm:py-8 text-left max-sm:text-center flex flex-col gap-8 items-center justify-center">
 		<!-- Introduction -->
-		<div class="w-full h-full py-4 flex flex-col flex-wrap">
+		<div class="w-full max-w-[80rem] h-full py-4 flex flex-col flex-wrap">
 			<p class= "py-4 text-white font-semibold text-3xl drop-shadow-md"> Hello, my name is </p>
 			<p class="font-semibold text-[64px] text-transparent gradient-text bg-clip-text"> Jason Chau </p> 
 			<p class="max-w-[1000px] h-fit py-4 text-white text-[2rem] max-md:text-[1.5rem] max-sm:text-[20px] text-wrap font-semibold drop-shadow-md">
@@ -147,38 +174,56 @@
 		</div>
 
 		<!-- Skills -->
-		<div class="w-full flex flex-col gap-4 py-4 mx-auto">
+		<div class="w-full max-w-[80rem] flex flex-col gap-4 py-4 mx-auto">
 			<p class="w-fit max-sm:mx-auto text-[3rem] text-white font-semibold bg-gray-700 bg-opacity-[0.5] p-2 rounded-xl"> Technologies </p>
 			<div class="w-fit flex flex-wrap justify-start max-sm:justify-center gap-4 rounded-xl ">
-				{#each techStack as tech}
+			{#each techStack as tech}
+				{@const TechComponent = techMap[tech]}
 				<div class="flex gap-4 p-4 rounded-3xl">
-					<svelte:component this={techMap[tech]} className="w-[6rem] h-[6rem] p-4 m-auto hover:bg-gray-100 hover:bg-opacity-[0.5] hover:cursor-pointer rounded-xl" />
+					{#if TechComponent}
+						<TechComponent className="w-[6rem] h-[6rem] p-4 m-auto hover:bg-gray-100 hover:bg-opacity-[0.5] hover:cursor-pointer rounded-xl" />
+					{/if}
 				</div>
-				{/each}
+			{/each}
 			</div>
 		</div>
-
+		{#if showModal}
+		<div class='fixed inset-0 w-full h-full bg-black bg-opacity-[0.85] z-50'>
+			Hello!
+		</div>
+		{/if}
 		<!-- Projects -->
-		<div class="w-full flex flex-col gap-16 py-4 mx-auto">
+		<div class="w-full max-w-[80rem] flex flex-col gap-16 py-4 mx-auto">
 			<p class="w-fit px-6 max-sm:mx-auto text-[3rem] text-white font-semibold bg-gray-700 bg-opacity-[0.5] p-2 rounded-2xl"> Projects </p>
-			<div class="flex flex-col flex-wrap justify-start max-sm:justify-center gap-32">
+			<div class="flex flex-col flex-wrap justify-start max-sm:justify-center gap-16">
 				{#each [...demos.entries()] as [projectName, project]}
 					<div class="w-full max-sm:mx-auto flex max-lg:flex-col gap-4 bg-gray-700 bg-opacity-[0.5] p-4 rounded-xl shadow-lg">
-						<div class='w-[36rem] max-lg:w-full h-full max-sm:mx-auto rounded-md'>
-						{#if project.images && project.images.length > 0}
-							<img class='w-full rounded-md' src="/demos/{project.images[0]}" alt="">
-						{:else if project.videos && project.videos.length > 0}
-							<iframe style="aspect-radio: 16/9;" title='Aggregate Shopping Cart Demo' src={project.videos[0]} frameborder="0" allowfullscreen></iframe>
-						{/if}
+						<!-- Image container -->
+						<div class='w-full flex flex-col gap-4 lg:w-2/3 h-full max-sm:mx-auto rounded-md'>
+							{#if project.images && project.images.length > 0}
+								<img class='w-full rounded-md' src="/demos/{project.images[0]}" alt="">
+							{:else if project.videos && project.videos.length > 0}
+								<iframe style="aspect-ratio: 16/9;" class="w-full rounded-md" title='Project Demo' src={project.videos[0]} frameborder="0" allowfullscreen></iframe>
+							{/if}
 						</div>
+						
 						<!-- Project Description -->
-						<div class="w-full flex flex-col gap-4 font-semibold text-[1.5rem] max-sm:text-[1.25rem] text-white bg-gray-900 bg-opacity-[0.5] p-4 rounded-xl">
-							<p class='w-fit max-sm:mx-auto bg-gray-700 bg-opacity-[0.5] p-2 rounded-xl'> {projectName} </p>
-							<p class='text-[1rem] text-left flex flex-row'> {project.description} </p>
+						<div class="w-full lg:w-1/3 flex flex-col gap-4 font-semibold text-[1.5rem] max-sm:text-[1.25rem] text-white bg-gray-900 bg-opacity-[0.5] p-4 rounded-xl">
+							<div class='flex flex-row gap-4'>
+								<p class='w-fit max-sm:mx-auto bg-gray-700 bg-opacity-[0.5] p-2 rounded-xl'>{projectName}</p>
+								{#if project.link}
+									<a class='w-fit h-fit p-2 ml-auto flex bg-opacity-[0.5] hover:bg-gray-700 rounded-full' href={project.link} target="_blank" rel="noopener"> <GitHub className="w-[2.5rem] h-fit"/> </a>
+								{/if}
+							</div>
+							<p class='text-[1rem] text-left flex flex-row'>{project.description}</p>
+							<!-- Project Tech Stack -->
 							<div class="w-fit mt-auto flex flex-row bg-gray-700 bg-opacity-[0.5] rounded-xl">
-							{#each project.techStack ?? [] as tech}
-								<svelte:component this={techMap[tech]} className="w-[3rem] h-[3rem] p-1 m-1 rounded-lg hover:bg-gray-300 hover:bg-opacity-[0.5] hover:cursor-pointer" />
-							{/each}
+								{#each project.techStack ?? [] as tech}
+									{@const TechComponent = techMap[tech]}
+									{#if TechComponent}
+										<TechComponent className="w-[3rem] h-[3rem] p-1 m-1 rounded-lg hover:bg-gray-300 hover:bg-opacity-[0.5] hover:cursor-pointer" />
+									{/if}
+								{/each}
 							</div>
 						</div>
 					</div>

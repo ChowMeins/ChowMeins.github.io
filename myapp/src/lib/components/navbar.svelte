@@ -31,8 +31,8 @@
 </script>
 
 <!--  Navbar -->
-<div class="w-full h-full flex gap-8 bg-[#151515] px-[24rem] max-2xl:px-[8rem] max-xl:px-[6rem] max-md:px-[4rem] max-sm:px-[2rem] py-4 z-[1]">
-  <ul class="navbar w-full h-full oswald text-white flex">
+<div class="w-full h-full flex bg-[#151515] px-[24rem] max-2xl:px-[8rem] max-xl:px-[6rem] max-md:px-[4rem] max-sm:px-[2rem] py-4 z-[1]">
+  <ul class="navbar w-full max-w-[80rem] flex gap-16 mx-auto oswald text-white">
     <li class="w-fit text-[1.5rem] text-nowrap mr-auto my-auto"> <a href="/"> JASON CHAU </a> </li>
     <li class="nav-item"><a href="/"> HOME </a></li>
     <li class="nav-item"><a href="/tools"> TOOLS </a></li>
@@ -55,9 +55,6 @@
 {/if}
 
 <style>
-  .navbar {
-    gap: 5%;
-  }
   .nav-item {
     margin-top: auto;
     margin-bottom: auto;
