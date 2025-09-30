@@ -6,11 +6,15 @@
 	import CSS from "$lib/techIcons/css.svelte";
 	import JavaScript from "$lib/techIcons/javascript.svelte";
 	import TypeScript from "$lib/techIcons/typescript.svelte";
+	import HTMX from "$lib/techIcons/htmx.svelte";
+	import AlpineJS from "$lib/techIcons/alpine_js.svelte";
 	import Svelte from "$lib/techIcons/svelte.svelte";
 	import React from "$lib/techIcons/react.svelte";
+	import Django from "$lib/techIcons/django.svelte"
 	import Tailwind from "$lib/techIcons/tailwind.svelte";
 	import SQL from "$lib/techIcons/sql.svelte";
 	import Firebase from "$lib/techIcons/firebase.svelte";
+	import Playwright from "$lib/techIcons/playwright.svelte";
 	import Git from "$lib/techIcons/git.svelte";
 	import GitHub from "$lib/techIcons/github-white.svelte";
 	import RaspberryPi from "$lib/techIcons/raspberry-pi.svelte";
@@ -27,129 +31,172 @@
 		className: string;
 	}
 
-	const techStack: string[] = ['python', 'java', 'html', 'css', 'js', 'ts', 'svelte', 'react', 'tailwind', 'sql', 'firebase', 'git', 'github'];
+	const techStack: string[] = ['Python', 'Java', 'HTML', 'CSS', 'JS', 'TS', 'Svelte', 'React', 'Tailwind', 'SQL', 'Firebase', 'Playwright', 'Git', 'GitHub'];
 	const techMap: Record<string, Component<TechIconProps>> = {
-		python: Python,
-		java: Java,
-		cpp: Cpp,
-		csharp: Csharp,
-		html: HTML,
-		css: CSS,
-		js: JavaScript,
-		ts: TypeScript,
-		svelte: Svelte,
-		react: React,
-		tailwind: Tailwind,
-		sql: SQL,
-		firebase: Firebase,
-		git: Git,
-		github: GitHub,
-		raspberryPi: RaspberryPi,
-		arduino: Arduino,
-		bash: Bash,
-		unity: Unity,
-		docker: Docker,
+		'Python': Python,
+		'Java': Java,
+		'C++': Cpp,
+		'C#': Csharp,
+		'HTML': HTML,
+		'CSS': CSS,
+		'JS': JavaScript,
+		'TS': TypeScript,
+		'HTMX': HTMX,
+		'AlpineJS': AlpineJS,
+		'Svelte': Svelte,
+		'React': React,
+		'Django': Django,
+		'Tailwind': Tailwind,
+		'SQL': SQL,
+		'Firebase': Firebase,
+		'Playwright': Playwright,
+		'Git': Git,
+		'GitHub': GitHub,
+		'Raspberry Pi': RaspberryPi,
+		'Arduino': Arduino,
+		'Bash': Bash,
+		'Unity': Unity,
+		'Docker': Docker,
 	}
 
 	const demos: Map<string, {description: string, link?: string, images?: string[], videos?: string[], techStack?: string[]}> = new Map([
     [
       'PokeTracker',
       {
-        description: "A web application for Pokémon enthusiasts to track their shiny hunting progress. Built with SvelteKit, TypeScript, Tailwind, and Firebase, it features real-time data management, optimized Pokémon image loading via PokeAPI, EV tracking, and secure user authentication. With a responsive designed interface ensure a seamless experience for all platforms.",
+        description: `A web application for Pokémon enthusiasts to track their shiny hunting progress. 
+					Built with SvelteKit, TypeScript, Tailwind, and Firebase, it features real-time data management, 
+					optimized Pokémon image loading via PokeAPI, EV tracking, and secure user authentication. 
+					With a responsive designed interface ensure a seamless experience for all platforms.`,
         link: "https://github.com/ChowMeins/PokeTracker",
 		images: ['PokeTracker.png', 'PokeTracker.gif'],
 		techStack: [
-		 	"svelte",
-			"ts",
-			"tailwind",
-			"firebase"
+		 	"Svelte",
+			"TS",
+			"Tailwind",
+			"Firebase"
 		]
       }
     ],
 	[
+	  'ERISA Dev Challenge 2025',
+	  {
+	  	description: `A insurance claim analyzation web application built for the ERISA Recovery Dev Challenge 2025. 
+						Features include viewing, searching through a interactive paginated claims table, 
+						detailed claim views, the ability to add notes and flags for review tracking.`,
+        link: "https://github.com/ChowMeins/ERISA-Recovery-Dev-Challenge-2025",
+		images: ['InsuranceClaims.png'],
+		techStack: [
+		 	"Django",
+			"HTMX",
+			"AlpineJS",
+			"SQL",
+		]
+      }
+	],
+	[
       'Pokemon Shiny Hunting Bot',
       {
-        description: 'A Python script that sends an Arduino commands in to operate a Nintendo 3DS to shiny hunt Pokemon. Detection methods included image comparison with OpenCV/NumPy and photoresistor to detect light intensity, while servo motors press buttons to automate dialogue interactions and encounters.',
+        description: `A Python script that sends an Arduino commands in to operate a Nintendo 3DS to shiny hunt Pokemon. 
+						Detection methods included image comparison with OpenCV/NumPy and photoresistor to detect light intensity, 
+						while servo motors press buttons to automate dialogue interactions and encounters.`,
         link: "https://github.com/ChowMeins/Pokemon-Shiny-Hunter-Bot",
 		images: ['PokemonShinyHuntingBot.png', 'PokemonShinyHuntingBotDemo.gif'],
 		techStack: [
-			"python",
-			"arduino",
-			"cpp"
+			"Python",
+			"Arduino",
+			"C++"
 		]
       }
     ],
 	[
 		'Hoyoverse Daily Check-In Automation Script',
 		{
-			description: 'A Python script that automates the daily check-in process for Genshin Impact, Honkai: Star Rail, and Zenless Zone Zero. Using Playwright to interact with the web interface, the script logs in to the user account and completes the check-in process, ensuring users never miss out on their daily rewards. Deployed using Docker on a Raspberry Pi for daily execution.',
+			description: `A Python script that automates the daily check-in process for Genshin Impact, Honkai: Star Rail, and Zenless Zone Zero. 
+						Using Playwright to interact with the web interface, the script logs in to the user account and completes the check-in process, 
+						ensuring users never miss out on their daily rewards. Deployed using Docker on a Raspberry Pi for daily execution.`,
 			link: "https://github.com/ChowMeins/Hoyoverse-Daily-Check-In-Bot",
 			images: ['HoyoverseCheckIn.png'],
 			techStack: [
-				'python',
-				'bash',
-				'raspberryPi',
-				'docker'
+				'Python',
+				'Playwright',
+				'Bash',
+				'Raspberry Pi',
+				'Docker'
 			]
 		}
 	],
     [
       'Wizard101 Quiz Solver',
       {
-        description: "A Python script that allows users to automatically completed trivia for crowns (in-game currency). The Selenium package is used to automate web browser interactions to both click and navigate through the questions. OpenAI\'s whisper (an automatic speech recognition system) allows us to bypass the reCAPTCHA verification pop-ups. Using a bash script hosted on a Raspberry Pi, this program can be set to run daily.",
+        description: `A Python script that allows users to automatically completed trivia for crowns (in-game currency). 
+					The Selenium package is used to automate web browser interactions to both click and navigate through the questions. 
+					OpenAI\'s whisper (an automatic speech recognition system) allows us to bypass the reCAPTCHA verification pop-ups. 
+					Using a bash script hosted on a Raspberry Pi, this program can be set to run daily.`,
         link: "https://github.com/ChowMeins/Wizard101-Quiz-Solver",
 		images: ['Wizard101.png', 'wizard101.gif'],
 		techStack: [
-			"python"
+			'Python',
+			'Playwright',
+			'Bash',
+			'Raspberry Pi',
+			'Docker'
 		]
       }
     ],
     [
       'Musi to YouTube Playlist Converter',
       {
-        description: 'A Python script that converts playlists from the mobile app Musi to YouTube using the following: Selenium to execute a headless chrome web driver, Beautiful Soup to scrape the YouTube links from the Musi URL, and the YouTube API to create and insert the songs into a new playlist.',
+        description: `A Python script that converts playlists from the mobile app Musi to YouTube using the following: 
+					Selenium to execute a headless chrome web driver, Beautiful Soup to scrape the YouTube links from the Musi URL, 
+					and the YouTube API to create and insert the songs into a new playlist.`,
         link: "https://github.com/ChowMeins/Musi-to-YouTube-Playlist",
 		images: ['MusiToYouTube.png'],
 		techStack: [
-			"python"
+			"Python"
 		]
       }
     ],
     [
       'Comet Dash',
       {
-        description: 'A game made in Unity in the style of a infinite-runner. Implemented infinite-level generation, including dynamic road and terrain creation, a custom jump function with realistic gravitational physics to enhance the car\'s movement and gameplay mechanics. Optimized procedural generation for efficient performance, memory management, and smooth transitions between generated segments.',
+        description: `A game made in Unity in the style of a infinite-runner. Implemented infinite-level generation, 
+					including dynamic road and terrain creation, a custom jump function with realistic gravitational physics to enhance the car\'s movement and gameplay mechanics. 
+					Optimized procedural generation for efficient performance, memory management, and smooth transitions between generated segments.`,
         link: "https://github.com/ZaneLeBlanc/Team16Project",
 		images: ['CometDash.png', 'CometDashDemo.gif'],
 		techStack: [
-			"unity",
-			"csharp"
+			"Unity",
+			"C#"
 		]
       }
     ],
     [
       'Aggregate Shopping Cart',
       {
-        description: 'Sponsored by uARExpert, the Aggregate Shopping Cart provides a seamless virtual shopping cart between users and experts alike using React, PostgreSQL, and Chakra UI. The shopping cart will aggregate and source products/services, configuring it to provide multiple rounds of review before the products are sourced. Main features include a user-friendly UI involving secure login functionality, account management capabilities, the ability to manage project pages, incorporation of shopping carts for each project page, and integration within a database.',
+        description: `Sponsored by uARExpert, the Aggregate Shopping Cart provides a seamless virtual shopping cart between users and experts alike 
+					using React, PostgreSQL, and Chakra UI. The shopping cart will aggregate and source products/services, configuring it to provide multiple 
+					rounds of review before the products are sourced. Main features include a user-friendly UI involving secure login functionality, 
+					account management capabilities, the ability to manage project pages, incorporation of shopping carts for each project page, and integration within a database.`,
         link: "https://github.com/ChosenQuill/uARexpert",
 		videos: ['https://www.youtube.com/embed/_V5PumrW9W8?si=nsu1_4d3ZYUCa53q'],
 		techStack: [
-			'react',
-			'ts',
-			'sql',
+			'React',
+			'TS',
+			'SQL',
 		]
       }
     ],
 	[
       'Personal Portfolio Website',
       {
-        description: 'A personal portfolio website built with SvelteKit, showcasing my projects, skills, and experience. The site features a responsive design and a clean layout to highlight my work effectively.',
+        description: `A personal portfolio website built with SvelteKit, showcasing my projects, skills, and experience. 
+					The site features a responsive design and a clean layout to highlight my work effectively.`,
         link: "https://github.com/ChowMeins/ChowMeins.github.io",
 		images: ['PersonalPortfolio.png'],
 		techStack: [
-			'svelte',
-			'ts',
-			'tailwind',
+			'Svelte',
+			'TS',
+			'Tailwind',
 		]
       }
     ],
@@ -179,9 +226,12 @@
 			<div class="w-fit flex flex-wrap justify-start max-sm:justify-center gap-4 rounded-xl ">
 			{#each techStack as tech}
 				{@const TechComponent = techMap[tech]}
-				<div class="flex gap-4 p-4 rounded-3xl">
+				{@const TechName = tech}
+				<div class="flex gap-4 p-4">
 					{#if TechComponent}
-						<TechComponent className="w-[6rem] h-[6rem] p-4 m-auto hover:bg-gray-100 hover:bg-opacity-[0.5] hover:cursor-pointer rounded-xl" />
+						<div class='flex w-fit h-fit rounded-xl hover:bg-gray-100 hover:bg-opacity-[0.5] hover:cursor-pointer' title={TechName}>
+							<TechComponent className="w-[6rem] h-[6rem] p-4 m-auto" />
+						</div>
 					{/if}
 				</div>
 			{/each}
@@ -192,6 +242,7 @@
 			Hello!
 		</div>
 		{/if}
+
 		<!-- Projects -->
 		<div class="w-full max-w-[80rem] flex flex-col gap-16 py-4 mx-auto">
 			<p class="w-fit px-6 max-sm:mx-auto text-[3rem] text-white font-semibold bg-gray-700 bg-opacity-[0.5] p-2 rounded-2xl"> Projects </p>
@@ -217,11 +268,14 @@
 							</div>
 							<p class='text-[1rem] text-left flex flex-row'>{project.description}</p>
 							<!-- Project Tech Stack -->
-							<div class="w-fit mt-auto flex flex-row bg-gray-700 bg-opacity-[0.5] rounded-xl">
+							<div class="w-fit mt-auto flex flex-row gap-2 p-2 bg-gray-700 bg-opacity-[0.5] rounded-xl">
 								{#each project.techStack ?? [] as tech}
 									{@const TechComponent = techMap[tech]}
+									{@const TechName = tech}
 									{#if TechComponent}
-										<TechComponent className="w-[3rem] h-[3rem] p-1 m-1 rounded-lg hover:bg-gray-300 hover:bg-opacity-[0.5] hover:cursor-pointer" />
+										<div class='flex w-fit h-fit rounded-xl hover:bg-gray-300 hover:bg-opacity-[0.5] hover:cursor-pointer' title={TechName}>
+											<TechComponent className="w-[3rem] h-[3rem] p-1 rounded-lg hover:bg-gray-300 hover:bg-opacity-[0.5] hover:cursor-pointer" />
+										</div>
 									{/if}
 								{/each}
 							</div>
